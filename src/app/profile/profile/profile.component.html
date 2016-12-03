@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()" #profileForm="ngForm">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text"  [(ngModel)]="username" required class="form-control" id="username" name="username"  #userName="ngModel">
+  </div>
+  <div [hidden]="userName.valid" class="alert alert-danger">
+      Username is required
+    </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+

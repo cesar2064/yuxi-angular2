@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 ">
+      <input type="number" [(ngModel)]="display" class="result">
+    </div>
+    <div class="col-xs-12">
+      <!-- First Row -->
+      <div class="row">
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'7'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'8'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'9'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-success',value:'+'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+      </div>
+      <!-- Second Row -->
+      <div class="row">
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'4'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'5'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'6'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-success',value:'-'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+      </div>
+      <!-- Third Row -->
+      <div class="row">
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'3'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'2'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'1'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-success',value:'*'}"  (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+      </div>
+      <!-- Fourth Row -->
+      <div class="row">
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'0'}" (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-primary',value:'.'}" (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-warning',value:'='}" (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+        <div class="col-xs-3">
+          <button-cmp [config]="{css:'btn-success',value:'/'}" (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+      </div>
+      <!-- Fifth Row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <button-cmp [config]="{css:'btn-danger',value:'button'}" (sendBtnValue)="updateDisplay($event)"></button-cmp>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
