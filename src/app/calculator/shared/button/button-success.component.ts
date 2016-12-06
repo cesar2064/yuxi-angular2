@@ -1,5 +1,6 @@
+import { CalculatorService } from './../calculator.service';
 import { Component, OnInit } from '@angular/core';
-import {ButtonComponent} from './button.component'
+import { ButtonComponent } from './button.component'
 
 @Component(Object.assign({
     selector: 'button-success',
@@ -7,11 +8,11 @@ import {ButtonComponent} from './button.component'
     styleUrls: ['./button.component.css']
 }, ButtonComponent.metaData))
 export class SuccessButton extends ButtonComponent {
-    constructor() { 
-        super("btn-success");
+    constructor(calService: CalculatorService) {
+        super("btn-success", calService);
     }
 
-    ngOnInit() { 
+    ngOnInit() {
         super.ngOnInit();
     }
 }

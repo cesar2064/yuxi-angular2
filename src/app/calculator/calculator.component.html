@@ -2,77 +2,71 @@
   <div class="col-xs-12 ">
     <input type="text" [value]="expression" class="result">
   </div>
-
   <div class="col-xs-12">
-
-     <!-- First Row -->
+    <!-- First Row -->
     <div class="row">
       <div class="col-xs-3">
-        <button-primary [DisplayText]="7" (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="7"></button-primary>
       </div>
       <div class="col-xs-3">
-         <button-primary [DisplayText]="8"  (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="8"></button-primary>
       </div>
       <div class="col-xs-3">
-         <button-primary [DisplayText]="9"  (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="9"></button-primary>
       </div>
       <div class="col-xs-3">
-        <button-success [DisplayText]="'+'" (clicked)="OnClick($event)"></button-success>
+        <button-success [DisplayText]="'+'"></button-success>
       </div>
     </div>
-
-      <!-- Second Row -->
+    <!-- Second Row -->
     <div class="row">
       <div class="col-xs-3">
-         <button-primary [DisplayText]="4" (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="4"></button-primary>
       </div>
       <div class="col-xs-3">
-         <button-primary [DisplayText]="5" (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="5"></button-primary>
       </div>
       <div class="col-xs-3">
-         <button-primary [DisplayText]="6" (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="6"></button-primary>
       </div>
       <div class="col-xs-3">
-         <button-success [DisplayText]="'-'" (clicked)="OnClick($event)"></button-success>
+        <button-success [DisplayText]="'-'"></button-success>
       </div>
     </div>
-
-      <!-- Third Row -->
+    <!-- Third Row -->
     <div class="row">
       <div class="col-xs-3">
-         <button-primary [DisplayText]="3" (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="3"></button-primary>
       </div>
       <div class="col-xs-3">
-         <button-primary [DisplayText]="2" (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="2"></button-primary>
       </div>
       <div class="col-xs-3">
-         <button-primary [DisplayText]="1" (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="1"></button-primary>
       </div>
       <div class="col-xs-3">
-         <button-success [DisplayText]="'*'" (clicked)="OnClick($event)"></button-success>
+        <button-success [DisplayText]="'*'"></button-success>
       </div>
     </div>
-
     <!-- Fourth Row -->
     <div class="row">
       <div class="col-xs-3">
-         <button-primary [DisplayText]="0" (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="0"></button-primary>
       </div>
       <div class="col-xs-3">
-         <button-primary [DisplayText]="'.'" (clicked)="OnClick($event)"></button-primary>
+        <button-primary [DisplayText]="'.'"></button-primary>
       </div>
       <div class="col-xs-3">
         <button-warning [DisplayText]="'='" (clicked)="evalExpression()"></button-warning>
       </div>
       <div class="col-xs-3">
-        <button-success [DisplayText]="'/'" (clicked)="OnClick($event)"></button-success>
+        <button-success [DisplayText]="'/'"></button-success>
       </div>
     </div>
-
     <!-- Fifth Row -->
     <div class="row">
       <div class="col-xs-12">
-          <button-danger [DisplayText]="'Clear'" (clicked)="clearExpression()"></button-danger>
+        <button-danger [DisplayText]="'Clear'" (clicked)="clearExpression()"></button-danger>
       </div>
     </div>
   </div>
