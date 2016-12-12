@@ -17,5 +17,9 @@ export class CoursesService implements ICoursesService{
   getCourses():CourseModel[]{
     return this.courses;
   }
+  
+  getById(id:Number):CourseModel{
+    return this.courses.find(course=> course.getId() === id);
+  }
 
 }

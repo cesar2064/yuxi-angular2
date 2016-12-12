@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 export class PagesService implements IPagesService {
 
   private pages: PageModel[] = [
-    new PageModel(1, 'Home','/home', /^\/$|^\/home$/),
-    new PageModel(2, 'Courses','/courses', /^\/courses$/),
-    new PageModel(3, 'Teachers','/teachers', /^\/teachers$/)
+    new PageModel(1, 'Home','/home'),
+    new PageModel(2, 'Courses','/courses'),
+    new PageModel(3, 'Teachers','/teachers')
   ]
 
   constructor() { }

@@ -2,8 +2,7 @@ export class PageModel {
   constructor(
     private id: number,
     private name: string,
-    private link: string,
-    private matcher:RegExp,
+    private link: string,    
     private active: boolean = false,
     private visible: boolean = true
   ) { }
@@ -15,10 +14,7 @@ export class PageModel {
   getName():string{
     return this.name;
   }
-
-  getMatcher():RegExp{
-    return this.matcher;
-  }
+  
   getLink():string{
     return this.link;
   }
