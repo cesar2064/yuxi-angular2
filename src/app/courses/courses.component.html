@@ -1,0 +1,27 @@
+<div class="courses">
+  <h1 class="horizontal-center">
+    Yuxi courses {{date | date:'d/M/y'}}
+  </h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name
+          <orderer key="getName" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
+        </th>
+        <th>Hours
+          <orderer key="getHours" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
+        </th>
+        <th>Start date
+          <orderer key="getStartDate" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses | orderBy:orderKey">
+        <td>{{course.getName()}}</td>
+        <td>{{course.getHours()}}</td>
+        <td>{{course.getStartDate() | date:'d/M/y'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
