@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { OrdererComponent } from './../shared/orderer/orderer.component';
 import { CoursesService } from './shared/courses.service';
 import { ICoursesService } from './shared/definitions/courses.service';
@@ -14,7 +15,8 @@ import { CourseFormComponent } from './shared/course-form/course-form.component'
 @NgModule({
   imports: [
     CommonModule,
-    CoursesRoutingModule
+    CoursesRoutingModule,
+    FormsModule
   ],
   declarations: [CoursesComponent, OrderByPipe, OrdererComponent, CourseComponent, StartDateIconComponent, CourseDetailsComponent, CourseFormComponent],
   providers: [

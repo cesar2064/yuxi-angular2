@@ -27,7 +27,7 @@ export class CoursesComponent implements OnInit {
   }
 
   onRowClick(course: CourseModel): void {
-    this.router.navigate(['/courses', course.getId()]);
+    this.router.navigate(['/courses', course.id]);
   }
 
 }

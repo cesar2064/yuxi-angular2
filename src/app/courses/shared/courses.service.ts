@@ -19,7 +19,7 @@ export class CoursesService implements ICoursesService{
   }
   
   getById(id:Number):CourseModel{
-    return this.courses.find(course=> course.getId() === id);
+    return this.courses.find(course=> course.id === id);
   }
 
 }

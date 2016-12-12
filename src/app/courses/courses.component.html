@@ -6,21 +6,21 @@
     <thead>
       <tr>
         <th>Name
-          <orderer key="getName" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
+          <orderer key="name" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
         </th>
         <th>Hours
-          <orderer key="getHours" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
+          <orderer key="hours" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
         </th>
         <th>Start date
-          <orderer key="getStartDate" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
+          <orderer key="startDate" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
         </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let course of courses | orderBy:orderKey" (click)="onRowClick(course)">
-        <td>{{course.getName()}}</td>
-        <td>{{course.getHours()}}</td>
-        <td>{{course.getStartDate() | date:'d/M/y'}} <date-icon [comparedDate]="course.getStartDate()" [date]="date"></date-icon></td>
+        <td>{{course.name}}</td>
+        <td>{{course.hours}}</td>
+        <td>{{course.startDate | date:'d/M/y'}} <date-icon [comparedDate]="course.startDate" [date]="date"></date-icon></td>
       </tr>
     </tbody>
   </table>
