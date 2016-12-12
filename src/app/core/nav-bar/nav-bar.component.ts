@@ -12,15 +12,11 @@ export class NavBarComponent implements OnInit {
   private pages: PageModel[];
 
   constructor(
-    @Inject('IPagesService') private pagesServ: IPagesService,
-    private router: Router,
+    @Inject('IPagesService') private pagesServ: IPagesService    
   ) { }
 
   ngOnInit() {
-    this.pages = this.pagesServ.getPages();
-    this.router.events.subscribe((event) => {
-      this.pagesServ.setActiveByLink(event.url);
-    });
+    this.pages = this.pagesServ.getPages();    
   }
 
 }

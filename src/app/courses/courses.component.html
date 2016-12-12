@@ -17,10 +17,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let course of courses | orderBy:orderKey">
+      <tr *ngFor="let course of courses | orderBy:orderKey" (click)="onRowClick(course)">
         <td>{{course.getName()}}</td>
         <td>{{course.getHours()}}</td>
-        <td>{{course.getStartDate() | date:'d/M/y'}}</td>
+        <td>{{course.getStartDate() | date:'d/M/y'}} <date-icon [comparedDate]="course.getStartDate()" [date]="date"></date-icon></td>
       </tr>
     </tbody>
   </table>

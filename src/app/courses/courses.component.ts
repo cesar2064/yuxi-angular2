@@ -18,7 +18,12 @@ export class CoursesComponent implements OnInit {
     this.courses = this.courseSer.getCourses();
   }
 
-  orderEvent(key) {
+  orderEvent(key): void {
     this.orderKey = key;
   }
+
+  onRowClick(course: CourseModel): void {
+    
+  }
+
 }

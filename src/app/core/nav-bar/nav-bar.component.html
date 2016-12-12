@@ -3,7 +3,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li *ngFor="let page of pages | isVisible" [ngClass]="{active:page.isActive()}">
+        <li *ngFor="let page of pages | isVisible" routerLinkActive="active">
           <a href="javascript:;" routerLink="{{page.getLink()}}">{{page.getName()}}</a>
         </li>        
       </ul>

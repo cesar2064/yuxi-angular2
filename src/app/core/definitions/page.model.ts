@@ -3,6 +3,7 @@ export class PageModel {
     private id: number,
     private name: string,
     private link: string,
+    private matcher:RegExp,
     private active: boolean = false,
     private visible: boolean = true
   ) { }
@@ -15,16 +16,11 @@ export class PageModel {
     return this.name;
   }
 
+  getMatcher():RegExp{
+    return this.matcher;
+  }
   getLink():string{
     return this.link;
-  }
-
-  isActive():boolean{
-    return this.active;
-  }
-
-  setActive(active:boolean):void{
-    this.active = active;
   }
 
   isVisible(){

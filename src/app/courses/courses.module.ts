@@ -6,13 +6,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoursesComponent } from './courses.component';
 import { OrderByPipe } from '../shared/pipes/order-by.pipe';
+import { CourseComponent } from './course/course.component';
+import { StartDateIconComponent } from './shared/start-date-icon/start-date-icon.component';
 
 @NgModule({
   imports: [
     CommonModule,
     CoursesRoutingModule
   ],
-  declarations: [CoursesComponent, OrderByPipe, OrdererComponent],
+  declarations: [CoursesComponent, OrderByPipe, OrdererComponent, CourseComponent, StartDateIconComponent],
   providers: [
     { provide: 'ICoursesService', useClass: CoursesService }
   ]
