@@ -1,26 +1,26 @@
 export class PageModel {
   constructor(
-    private id: number,
-    private name: string,
-    private link: string,    
-    private active: boolean = false,
-    private visible: boolean = true
+    private _id: number,
+    private _name: string,
+    private _link: string,    
+    private _active: boolean = false,
+    private _visible: boolean = true
   ) { }
 
-  getId():number{
-    return this.id;
+  get id():number{
+    return this._id;
   }
 
-  getName():string{
-    return this.name;
+  get name():string{
+    return this._name;
   }
   
-  getLink():string{
-    return this.link;
+  get link():string{
+    return this._link;
   }
 
-  isVisible(){
-    return this.visible;
+  get visible(){
+    return this._visible;
   }  
 
 }

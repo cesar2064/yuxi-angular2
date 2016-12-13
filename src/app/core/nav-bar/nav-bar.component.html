@@ -4,7 +4,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li *ngFor="let page of pages | isVisible" routerLinkActive="active">
-          <a href="javascript:;" routerLink="{{page.getLink()}}">{{page.getName()}}</a>
+          <a href="javascript:;" routerLink="{{page.link}}">{{page.name}}</a>
         </li>        
       </ul>
     </div>
