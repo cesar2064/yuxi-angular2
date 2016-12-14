@@ -1,5 +1,5 @@
-import { CourseModel } from './shared/definitions/course.model';
-import { ICoursesService } from './shared/definitions/courses.service';
+import { CourseModel } from '../shared/definitions/course.model';
+import { ICoursesService } from '../shared/definitions/courses.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 

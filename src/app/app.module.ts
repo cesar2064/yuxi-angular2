@@ -1,3 +1,4 @@
+import { CoursesService } from './core/courses.service';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,10 +15,12 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    CoreModule,    
+    CoreModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: 'ICoursesService', useClass: CoursesService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

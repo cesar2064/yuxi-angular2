@@ -1,5 +1,5 @@
-import { ICoursesService } from './../shared/definitions/courses.service';
-import { CourseModel } from './../shared/definitions/course.model';
+import { ICoursesService } from '../../shared/definitions/courses.service';
+import { CourseModel } from '../../shared/definitions/course.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -21,6 +21,10 @@ export class CourseDetailsComponent implements OnInit {
       let id = +params['id']; 
       this.course = this.courseSer.getById(id);
     });
+  }
+
+  courseUpdated(course):void{
+    this.courseSer.save(course);
   }
 
 }

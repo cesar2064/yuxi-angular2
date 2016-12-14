@@ -1,29 +1,29 @@
-<form class="form-horizontal">
+<form class="form-horizontal" [formGroup]="courseForm" (ngSubmit)="saveCourse($event)">
   <div class="form-group">
     <label for="name" class="col-sm-3 control-label">Name</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="name" placeholder="name" name="name" [ngModel]="course.name">
+      <input type="text" class="form-control" id="name" placeholder="name" name="name" formControlName="name">
     </div>
   </div>
   <div class="form-group">
     <label for="hours" class="col-sm-3 control-label">Hours</label>
     <div class="col-sm-9">
-      <input type="number" class="form-control" id="hours" name="hours" placeholder="hours" [ngModel]="course.hours">
+      <input type="number" class="form-control" id="hours" name="hours" placeholder="hours" formControlName="hours">
     </div>
   </div>
   <div class="form-group">
     <label for="startDate" class="col-sm-3 control-label">Start Date</label>
     <div class="col-sm-8">
-      <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date" [ngModel]="course.startDate">
+      <input type="text" class="form-control" id="startDate" name="startDate" placeholder="Start Date" formControlName="startDate">
     </div>
     <div class="col-sm-1">
-      <date-icon [date]="course.startDate"></date-icon>
+      <date-icon [date]="courseForm.controls.startDate.value"></date-icon>
     </div>
   </div>
   <div class="form-group">
-    <label for="startDate" class="col-sm-3 control-label">Thaught by</label>
+    <label for="thaughtBy" class="col-sm-3 control-label">Thaught by</label>
     <div class="col-sm-9">
-      <select class="form-control" id="thaughtBy" name="startDate" required="true" [ngModel]="course.teacherId">
+      <select class="form-control" id="thaughtBy" name="startDate" required="true" formControlName="teacherId">
         <option value>--- Select a teacher ---</option>
         <option *ngFor="let teacher of teachers" [value]="teacher.id">{{teacher.name}} {{teacher.lastName}}</option>
       </select>

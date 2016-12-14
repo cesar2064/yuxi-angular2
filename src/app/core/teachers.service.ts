@@ -1,5 +1,5 @@
-import { ITeachersService } from './definitions/teachers.service';
-import { TeacherModel } from './definitions/teacher.model';
+import { ITeachersService } from '../shared/definitions/teachers.service';
+import { TeacherModel } from '../shared/definitions/teacher.model';
 import { Injectable } from '@angular/core';
 
 @Injectable()

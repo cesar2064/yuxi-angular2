@@ -2,7 +2,7 @@ import { Component, Input, Output, Attribute, EventEmitter, OnChanges } from '@a
 
 @Component({
   selector: 'orderer',
-  templateUrl: 'orderer.component.html'
+  templateUrl: './orderer.component.html'
 })
 export class OrdererComponent implements OnChanges {
   @Output() orderEvent = new EventEmitter();

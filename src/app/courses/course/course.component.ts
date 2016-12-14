@@ -1,4 +1,4 @@
-import { CourseModel } from './../shared/definitions/course.model';
+import { CourseModel } from '../../shared/definitions/course.model';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

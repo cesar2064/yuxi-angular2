@@ -11,20 +11,40 @@ export class CourseModel {
     return this._id
   }
 
+  set id(id: number) {
+    this._id = this._id;
+  }
+
   get name(): string {
     return this._name;
+  }
+
+  set name(name: string) {
+    this._name = name;
   }
 
   get hours(): number {
     return this._hours;
   }
 
+  set hours(hours: number) {
+    this._hours = hours;
+  }
+
   get startDate(): Date {
     return this._startDate;
   }
 
-  get teacherId():number{
+  set startDate(startDate: Date) {
+    this._startDate = startDate;
+  }
+
+  get teacherId(): number {
     return this._teacherId;
+  }
+
+  set teacherId(teacherId: number) {
+    this._teacherId = teacherId;
   }
 
 }

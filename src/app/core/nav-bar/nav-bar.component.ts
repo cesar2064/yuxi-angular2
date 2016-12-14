@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { PageModel } from '../definitions/page.model';
-import { IPagesService } from '../definitions/pages.service';
+import { PageModel } from '../../shared/definitions/page.model';
+import { IPagesService } from '../../shared/definitions/pages.service';
 import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
