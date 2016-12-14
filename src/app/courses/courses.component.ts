@@ -14,7 +14,7 @@ export class CoursesComponent implements OnInit {
   private courses: CourseModel[];
 
   constructor( 
-    @Inject('ICoursesService') private courseSer: ICoursesService,
+    @Inject('ICoursesService') private courseSer: ICoursesService,    
     private router: Router
   ) { }
 

@@ -1,5 +1,7 @@
+import { TeacherModel } from './../../../core/definitions/teacher.model';
+import { ITeachersService } from './../../../core/definitions/teachers.service';
 import { CourseModel } from './../definitions/course.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 
 @Component({
   selector: 'course-form',
@@ -8,12 +10,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CourseFormComponent implements OnInit {
 
-  @Input() course:CourseModel;
+  @Input() course: CourseModel;
+  private teachers: TeacherModel[];
 
-  constructor() { }
+  constructor(
+    @Inject('ITeachersService') private teacherSer: ITeachersService
+  ) { }
 
   ngOnInit() {
-    
+    this.teachers = this.teacherSer.getTeachers();
   }
 
 }
