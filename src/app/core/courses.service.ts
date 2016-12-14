@@ -33,8 +33,7 @@ export class CoursesService implements ICoursesService {
     hours: number,
     startDate: Date,
     teacherId: number
-  }):void{
-    debugger
+  }):void{    
     let courseDB = this.getById(course.id);
     courseDB.name = course.name;
     courseDB.hours = course.hours;

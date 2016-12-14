@@ -4,10 +4,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-  templateUrl: './course-details.component.html',
-  styleUrls: ['./course-details.component.css']
+  templateUrl: './course-edit.component.html',
+  styleUrls: ['./course-edit.component.css']
 })
-export class CourseDetailsComponent implements OnInit {
+export class CourseEditComponent implements OnInit {
 
   private course: CourseModel;
 

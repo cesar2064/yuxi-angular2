@@ -25,9 +25,4 @@ export class CoursesComponent implements OnInit {
   orderEvent(key): void {
     this.orderKey = key;
   }
-
-  onRowClick(course: CourseModel): void {
-    this.router.navigate(['/courses', course.id]);
-  }
-
 }

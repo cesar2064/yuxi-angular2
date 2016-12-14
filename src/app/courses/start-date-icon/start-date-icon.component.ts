@@ -1,4 +1,4 @@
-import { IUtilsService } from '../../../shared/definitions/utils.service';
+import { IUtilsService } from '../../shared/definitions/utils.service';
 import { Component, Input, Inject } from '@angular/core';
 
 @Component({

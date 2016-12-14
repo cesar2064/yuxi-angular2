@@ -17,10 +17,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let course of courses | orderBy:orderKey" (click)="onRowClick(course)">
+      <tr *ngFor="let course of courses | orderBy:orderKey" [routerLink]="['/courses/edit', course.id]">
         <td>{{course.name}}</td>
         <td>{{course.hours}}</td>
-        <td>{{course.startDate | date:'d/M/y'}} <date-icon [date]="course.startDate"></date-icon></td>
+        <td>{{course.startDate | date:'d/M/y'}}
+          <date-icon [date]="course.startDate"></date-icon>
+        </td>
       </tr>
     </tbody>
   </table>

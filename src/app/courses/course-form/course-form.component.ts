@@ -1,8 +1,8 @@
-import { IUtilsService } from '../../../shared/definitions/utils.service';
-import { ICoursesService } from '../../../shared/definitions/courses.service';
-import { TeacherModel } from '../../../shared/definitions/teacher.model';
-import { ITeachersService } from '../../../shared/definitions/teachers.service';
-import { CourseModel } from '../../../shared/definitions/course.model';
+import { IUtilsService } from '../../shared/definitions/utils.service';
+import { ICoursesService } from '../../shared/definitions/courses.service';
+import { TeacherModel } from '../../shared/definitions/teacher.model';
+import { ITeachersService } from '../../shared/definitions/teachers.service';
+import { CourseModel } from '../../shared/definitions/course.model';
 import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common/src/pipes';
@@ -53,10 +53,13 @@ export class CourseFormComponent implements OnInit {
 
   saveCourse(event: Event): void {
     event.preventDefault();
+    let course = this.course;    
     let json = this.courseForm.value;
-    json.startDate = this.utilsSer.parseDate(json.startDate,'DD/MM/YY');
-    json.id = this.course.id;
-    this.courseUpdated.emit(json);
+    course.name = json.name;
+    course.hours = json.hours;
+    course.startDate = this.utilsSer.parseDate(json.startDate, 'DD/MM/YY');
+    course.teacherId = json.teacherId;
+    //this.courseUpdated.emit(json);
   }
 
 }

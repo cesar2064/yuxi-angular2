@@ -1,3 +1,4 @@
+import { CoursesService } from './courses.service';
 import { TeachersService } from './teachers.service';
 import { IsVisiblePipe } from './../shared/pipes/is-visible.pipe';
 import { PagesService } from './pages.service';
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
   exports:[NavBarComponent,IsVisiblePipe],
   providers:[
     { provide:'IPagesService', useClass: PagesService},
-    { provide:'ITeachersService', useClass: TeachersService}
+    { provide:'ITeachersService', useClass: TeachersService},
+    { provide: 'ICoursesService', useClass: CoursesService }
   ]
 })
 export class CoreModule { }
