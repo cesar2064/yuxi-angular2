@@ -1,9 +1,9 @@
 export class CourseModel {
   constructor(
-    private _id: number,
-    private _name: string,
-    private _hours: number,
-    private _teacherId: number,
+    private _id?: number,
+    private _name?: string,
+    private _hours?: number,
+    private _teacherId: number = 0,
     private _startDate: Date = new Date(),
   ) { }
 
@@ -12,7 +12,7 @@ export class CourseModel {
   }
 
   set id(id: number) {
-    this._id = this._id;
+    this._id = id;
   }
 
   get name(): string {

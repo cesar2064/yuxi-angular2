@@ -1,10 +1,10 @@
-import { IUtilsService } from '../../shared/definitions/utils.service';
-import { ICoursesService } from '../../shared/definitions/courses.service';
-import { TeacherModel } from '../../shared/definitions/teacher.model';
-import { ITeachersService } from '../../shared/definitions/teachers.service';
-import { CourseModel } from '../../shared/definitions/course.model';
+import { IUtilsService } from '../../../shared/definitions/utils.service';
+import { ICoursesService } from '../../../shared/definitions/courses.service';
+import { TeacherModel } from '../../../shared/definitions/teacher.model';
+import { ITeachersService } from '../../../shared/definitions/teachers.service';
+import { CourseModel } from '../../../shared/definitions/course.model';
 import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common/src/pipes';
 
 @Component({
@@ -15,13 +15,7 @@ import { DatePipe } from '@angular/common/src/pipes';
 export class CourseFormComponent implements OnInit {
 
   @Input() course: CourseModel;
-  @Output() courseUpdated: EventEmitter<{
-    id?: number,
-    name: string,
-    hours: number,
-    startDate: Date,
-    teacherId: number
-  }> = new EventEmitter();
+  @Output() afterUpdateUser: EventEmitter<CourseModel> = new EventEmitter();
 
   private teachers: TeacherModel[];
   private courseForm: FormGroup;
@@ -46,20 +40,39 @@ export class CourseFormComponent implements OnInit {
     return this.formBuilder.group({
       name: [course.name],
       hours: [course.hours],
-      startDate: [this.datePipe.transform(course.startDate, 'd/M/y')],
-      teacherId: [course.teacherId]
+      startDate: [this.datePipe.transform(course.startDate, 'd/M/y hh:mm a'), this.validateStartDate(this)],
+      teacherId: [course.teacherId, this.validateTeacher]
     })
   }
 
+  private validateTeacher(c: FormControl) {
+    if (c.value === 0) {
+      return {
+        valid: false
+      }
+    }
+  };
+
+  private validateStartDate(that) {
+    return (c: FormControl) => {
+      if (that.utilsSer.parseDate(c.value, 'DD-MM-YYYY hh:mm A') <= new Date()) {
+        return {
+          valid: false
+        }
+      }
+    }
+
+  };
+
   saveCourse(event: Event): void {
     event.preventDefault();
-    let course = this.course;    
+    let course = this.course;
     let json = this.courseForm.value;
     course.name = json.name;
     course.hours = json.hours;
-    course.startDate = this.utilsSer.parseDate(json.startDate, 'DD/MM/YY');
+    course.startDate = this.utilsSer.parseDate(json.startDate, 'DD-MM-YYYY hh:mm A');
     course.teacherId = json.teacherId;
-    //this.courseUpdated.emit(json);
+    this.afterUpdateUser.emit(course)
   }
 
 }

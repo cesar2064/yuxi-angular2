@@ -22,23 +22,9 @@ export class CoursesService implements ICoursesService {
     return this.courses.find(course => course.id === id);
   }
 
-  create(course:CourseModel):void{
+  create(course:CourseModel):void{    
     course.id = this.courses.length;
     this.courses.push(course)
-  }
-
-  save(course:{
-    id?: number,
-    name: string,
-    hours: number,
-    startDate: Date,
-    teacherId: number
-  }):void{    
-    let courseDB = this.getById(course.id);
-    courseDB.name = course.name;
-    courseDB.hours = course.hours;
-    courseDB.startDate = course.startDate;
-    courseDB.teacherId = course.teacherId;
-  }
+  }  
 
 }

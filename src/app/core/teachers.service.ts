@@ -7,8 +7,8 @@ export class TeachersService implements ITeachersService{
   private teachers: TeacherModel[] = [
     new TeacherModel(1, 'Bob', 'Alicon'),
     new TeacherModel(2, 'Jhony', 'Bravo'),
-    new TeacherModel(2, 'Alcor', 'Noque'),
-    new TeacherModel(2, 'Barry', 'Gota')
+    new TeacherModel(3, 'Alcor', 'Noque'),
+    new TeacherModel(4, 'Barry', 'Gota')
   ];
   constructor() { }
   

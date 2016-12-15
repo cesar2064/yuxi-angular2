@@ -1,30 +1,27 @@
 import { ICoursesService } from '../../shared/definitions/courses.service';
 import { CourseModel } from '../../shared/definitions/course.model';
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
-  templateUrl: './course-edit.component.html',
-  styleUrls: ['./course-edit.component.css']
+  templateUrl: './course-new.component.html',
+  styleUrls: ['./course-new.component.css']
 })
-export class CourseEditComponent implements OnInit {
+export class CourseNewComponent implements OnInit {
 
   private course: CourseModel;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     @Inject('ICoursesService') private courseSer: ICoursesService
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      let id = +params['id'];
-      this.course = this.courseSer.getById(id);
-    });
+    this.course = new CourseModel();
   }
 
   afterUpdateUser(): void {
+    this.courseSer.create(this.course);
     this.router.navigate(['/courses']);
   }
 

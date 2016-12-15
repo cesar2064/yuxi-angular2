@@ -1,6 +1,6 @@
 <div class="courses">
   <h1 class="horizontal-center">
-    Yuxi courses {{date | date:'d/M/y'}}
+    Yuxi courses {{date | date:'d/M/y hh:mm a'}}
   </h1>
   <table class="table table-bordered">
     <thead>
@@ -20,10 +20,13 @@
       <tr *ngFor="let course of courses | orderBy:orderKey" [routerLink]="['/courses/edit', course.id]">
         <td>{{course.name}}</td>
         <td>{{course.hours}}</td>
-        <td>{{course.startDate | date:'d/M/y'}}
+        <td>{{course.startDate | date:'d/M/y hh:mm a'}}
           <date-icon [date]="course.startDate"></date-icon>
         </td>
       </tr>
     </tbody>
   </table>
+  <div class="horizontal-center">
+    <button type="button" class="btn btn-default" routerLink="/courses/new">Add a new course</button>
+  </div>
 </div>
