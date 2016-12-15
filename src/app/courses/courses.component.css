@@ -1,3 +1,7 @@
 .courses{
   width: 600px;
 }
+.courses tr{
+  cursor: pointer; 
+  cursor: hand;
+}
