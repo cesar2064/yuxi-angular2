@@ -13,11 +13,11 @@ import { Component, Input, Inject, Attribute, OnChanges } from '@angular/core';
 export class StartDateIconComponent implements OnChanges{
 
   @Input() private date: Date | string;
+  @Input() format:string;
   private color:string;
 
   constructor(
-    @Inject('IUtilsService') private utilsSer: IUtilsService,
-    @Attribute('format') private format: string
+    @Inject('IUtilsService') private utilsSer: IUtilsService   
   ) { }
 
   ngOnChanges(changes:any):void{

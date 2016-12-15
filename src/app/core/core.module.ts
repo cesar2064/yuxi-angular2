@@ -1,3 +1,4 @@
+import { ConstantsService } from './constants.service';
 import { CoursesService } from './courses.service';
 import { TeachersService } from './teachers.service';
 import { IsVisiblePipe } from './../shared/pipes/is-visible.pipe';
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
   providers:[
     { provide:'IPagesService', useClass: PagesService},
     { provide:'ITeachersService', useClass: TeachersService},
-    { provide: 'ICoursesService', useClass: CoursesService }
+    { provide: 'ICoursesService', useClass: CoursesService },
+    ConstantsService
   ]
 })
 export class CoreModule { }

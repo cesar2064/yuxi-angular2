@@ -1,3 +1,4 @@
+import { ConstantsService } from './../core/constants.service';
 import { CourseModel } from '../shared/definitions/course.model';
 import { ICoursesService } from '../shared/definitions/courses.service';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -14,11 +15,12 @@ export class CoursesComponent implements OnInit {
   private courses: CourseModel[];
 
   constructor( 
-    @Inject('ICoursesService') private courseSer: ICoursesService,    
+    @Inject('ICoursesService') private courseSer: ICoursesService, 
+    private CONSTANTS:ConstantsService,   
     private router: Router
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.courses = this.courseSer.getCourses();
   }
 

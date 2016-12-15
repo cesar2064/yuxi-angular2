@@ -9,7 +9,7 @@ import { OrderByPipe } from '../shared/pipes/order-by.pipe';
 import { CourseComponent } from './course/course.component';
 import { StartDateIconComponent } from './start-date-icon/start-date-icon.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
-import { CourseFormComponent } from './shared/course-form/course-form.component';
+import { CourseFormComponent } from './course-form/course-form.component';
 import { Ng2DatetimePickerModule } from 'ng2-datetime-picker';
 import { CourseNewComponent } from './course-new/course-new.component';
 

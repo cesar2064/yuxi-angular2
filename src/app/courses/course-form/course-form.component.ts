@@ -1,8 +1,9 @@
-import { IUtilsService } from '../../../shared/definitions/utils.service';
-import { ICoursesService } from '../../../shared/definitions/courses.service';
-import { TeacherModel } from '../../../shared/definitions/teacher.model';
-import { ITeachersService } from '../../../shared/definitions/teachers.service';
-import { CourseModel } from '../../../shared/definitions/course.model';
+import { ConstantsService } from './../../core/constants.service';
+import { IUtilsService } from '../../shared/definitions/utils.service';
+import { ICoursesService } from '../../shared/definitions/courses.service';
+import { TeacherModel } from '../../shared/definitions/teacher.model';
+import { ITeachersService } from '../../shared/definitions/teachers.service';
+import { CourseModel } from '../../shared/definitions/course.model';
 import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common/src/pipes';
@@ -25,6 +26,7 @@ export class CourseFormComponent implements OnInit {
     @Inject('ITeachersService') private teacherSer: ITeachersService,
     @Inject('ICoursesService') private coursesSer: ICoursesService,
     @Inject('IUtilsService') private utilsSer: IUtilsService,
+    private CONSTANTS:ConstantsService,   
     private formBuilder: FormBuilder
   ) {
     this.datePipe = new DatePipe('en-Us');
@@ -40,7 +42,7 @@ export class CourseFormComponent implements OnInit {
     return this.formBuilder.group({
       name: [course.name],
       hours: [course.hours],
-      startDate: [this.datePipe.transform(course.startDate, 'd/M/y hh:mm a'), this.validateStartDate(this)],
+      startDate: [this.datePipe.transform(course.startDate, this.CONSTANTS.TIME.ANGULAR_DEFAULT_FORMAT), this.validateStartDate(this)],
       teacherId: [course.teacherId, this.validateTeacher]
     })
   }
@@ -55,7 +57,7 @@ export class CourseFormComponent implements OnInit {
 
   private validateStartDate(that) {
     return (c: FormControl) => {
-      if (that.utilsSer.parseDate(c.value, 'DD-MM-YYYY hh:mm A') <= new Date()) {
+      if (that.utilsSer.parseDate(c.value, this.CONSTANTS.TIME.DEFAULT_FORMAT) <= new Date()) {
         return {
           valid: false
         }
