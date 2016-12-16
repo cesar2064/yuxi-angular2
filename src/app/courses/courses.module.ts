@@ -8,7 +8,6 @@ import { CoursesComponent } from './courses.component';
 import { CourseComponent } from './course/course.component';
 import { StartDateIconComponent } from './start-date-icon/start-date-icon.component';
 import { CourseEditComponent } from './course-edit/course-edit.component';
-import { CourseFormComponent } from './course-form/course-form.component';
 import { CourseNewComponent } from './course-new/course-new.component';
 
 @NgModule({
@@ -19,6 +18,6 @@ import { CourseNewComponent } from './course-new/course-new.component';
     SharedModule,
     Ng2DatetimePickerModule
   ],
-  declarations: [CoursesComponent, CourseComponent, StartDateIconComponent, CourseEditComponent, CourseFormComponent, CourseNewComponent]  
+  declarations: [CoursesComponent, CourseComponent, StartDateIconComponent, CourseEditComponent, CourseNewComponent]  
 })
 export class CoursesModule { }

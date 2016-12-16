@@ -1,31 +1,30 @@
+import { FormBuilder } from '@angular/forms';
+import { TeacherFormComponent, TEACHER_FORM_COMPONENT_METADATA } from './../shared/teacher-form/teacher-form.component';
 import { ITeachersService } from '../../core/definitions/teachers.service';
 import { TeacherModel } from '../../shared/definitions/teacher.model';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-@Component({
-  templateUrl: './teacher-edit.component.html',
-  styleUrls: ['./teacher-edit.component.css']
-})
-export class TeacherEditComponent implements OnInit {
+@Component(TEACHER_FORM_COMPONENT_METADATA)
+export class TeacherEditComponent extends TeacherFormComponent {
 
-  private teacher:TeacherModel;
+  protected teacher: TeacherModel;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    @Inject('ITeachersService') private teacherSer: ITeachersService
-  ) { }
+    protected router: Router,
+    @Inject('ITeachersService') private teachersSer: ITeachersService,
+    protected formBuilder: FormBuilder
+  ) {
+    super(formBuilder, router, 'Edit a teacher');
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       let id = +params['id'];
-      this.teacher = this.teacherSer.getById(id);
+      this.teacher = this.teachersSer.getById(id);
     });
-  }
-
-  afterUpdateTeacher(): void {
-    this.router.navigate(['/teachers']);
+    super.ngOnInit();
   }
 
 }

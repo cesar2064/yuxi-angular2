@@ -1,28 +1,31 @@
+import { FormBuilder } from '@angular/forms';
+import { TeacherFormComponent, TEACHER_FORM_COMPONENT_METADATA } from './../shared/teacher-form/teacher-form.component';
 import { TeacherModel } from './../../shared/definitions/teacher.model';
 import { ITeachersService } from '../../core/definitions/teachers.service';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-@Component({
-  templateUrl: './teacher-new.component.html',
-  styleUrls: ['./teacher-new.component.css']
-})
-export class TeacherNewComponent implements OnInit {
+@Component(TEACHER_FORM_COMPONENT_METADATA)
+export class TeacherNewComponent extends TeacherFormComponent {
 
-  private teacher: TeacherModel;
+  protected teacher: TeacherModel;
 
   constructor(
-    private router: Router,
-    @Inject('ITeachersService') private teachersSer: ITeachersService
-  ) { }
+    protected router: Router,
+    @Inject('ITeachersService') private teachersSer: ITeachersService,
+    protected formBuilder: FormBuilder    
+  ) {
+    super(formBuilder,router,'Creating a teacher');
+   }
 
   ngOnInit() {
     this.teacher = new TeacherModel();
+    super.ngOnInit();
   }
 
-  afterUpdateTeacher(): void {    
-    this.teachersSer.create(this.teacher);
-    this.router.navigate(['/teachers']);
+  saveTeacher(event:Event): void {    
+    super.saveTeacher(event);    
+    this.teachersSer.create(this.teacher);    
   }
 
 }

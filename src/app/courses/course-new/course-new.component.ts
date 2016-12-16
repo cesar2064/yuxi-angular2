@@ -1,28 +1,35 @@
+import { ConstantsService } from './../../core/constants.service';
+import { FormBuilder } from '@angular/forms';
+import { IUtilsService } from './../../shared/definitions/utils.service';
+import { ITeachersService } from './../../core/definitions/teachers.service';
+import { CourseFormComponent, COURSE_FORM_COMPONENT_METADATA } from '../shared/course-form/course-form.component';
 import { ICoursesService } from '../../core/definitions/courses.service';
 import { CourseModel } from '../../shared/definitions/course.model';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-@Component({
-  templateUrl: './course-new.component.html',
-  styleUrls: ['./course-new.component.css']
-})
-export class CourseNewComponent implements OnInit {
-
-  private course: CourseModel;
+@Component(COURSE_FORM_COMPONENT_METADATA)
+export class CourseNewComponent extends CourseFormComponent {
 
   constructor(
-    private router: Router,
-    @Inject('ICoursesService') private courseSer: ICoursesService
-  ) { }
+    protected router: Router,
+    protected CONSTANTS: ConstantsService,
+    protected formBuilder: FormBuilder,
+    @Inject('ITeachersService') protected teacherSer: ITeachersService,
+    @Inject('IUtilsService') protected utilsSer: IUtilsService,
+    @Inject('ICoursesService') protected courseSer: ICoursesService,
+  ) {
+    super(teacherSer, utilsSer, CONSTANTS, formBuilder, router, 'Create a course');
+  }
 
   ngOnInit() {
     this.course = new CourseModel();
+    super.ngOnInit();
   }
 
-  afterUpdateUser(): void {
+  saveCourse(event: Event): void {
+    super.saveCourse(event);
     this.courseSer.create(this.course);
-    this.router.navigate(['/courses']);
   }
 
 }
