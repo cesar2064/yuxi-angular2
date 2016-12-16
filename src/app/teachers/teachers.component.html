@@ -1,1 +1,26 @@
-<h1>Teachers</h1>
+<div class="teachers">
+  <h1 class="horizontal-center">
+    Teachers
+  </h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name
+          <orderer key="name" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
+        </th>
+        <th>LastName
+          <orderer key="lastName" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
+        </th>        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of teachers | orderBy:orderKey" [routerLink]="['/teachers/edit', teacher.id]">
+        <td>{{teacher.name}}</td>
+        <td>{{teacher.lastName}}</td>        
+      </tr>
+    </tbody>
+  </table>
+  <div class="horizontal-center">
+    <button type="button" class="btn btn-default" routerLink="/teachers/new">Add a new teacher</button>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { CourseModel } from '../shared/definitions/course.model';
-import { ICoursesService } from '../shared/definitions/courses.service';
+import { ICoursesService } from './definitions/courses.service';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -22,9 +22,10 @@ export class CoursesService implements ICoursesService {
     return this.courses.find(course => course.id === id);
   }
 
-  create(course:CourseModel):void{    
-    course.id = this.courses.length;
-    this.courses.push(course)
-  }  
+  create(course: CourseModel): void {
+    let length = this.courses.length;
+    course.id = length + 1;
+    this.courses[length] = course;
+  }
 
 }

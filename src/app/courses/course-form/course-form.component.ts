@@ -1,8 +1,7 @@
 import { ConstantsService } from './../../core/constants.service';
 import { IUtilsService } from '../../shared/definitions/utils.service';
-import { ICoursesService } from '../../shared/definitions/courses.service';
 import { TeacherModel } from '../../shared/definitions/teacher.model';
-import { ITeachersService } from '../../shared/definitions/teachers.service';
+import { ITeachersService } from '../../core/definitions/teachers.service';
 import { CourseModel } from '../../shared/definitions/course.model';
 import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
@@ -14,7 +13,7 @@ import { DatePipe } from '@angular/common/src/pipes';
   styleUrls: ['./course-form.component.css']
 })
 export class CourseFormComponent implements OnInit {
-
+  private title:string;
   @Input() course: CourseModel;
   @Output() afterUpdateUser: EventEmitter<CourseModel> = new EventEmitter();
 
@@ -23,8 +22,7 @@ export class CourseFormComponent implements OnInit {
   private datePipe: DatePipe;
 
   constructor(
-    @Inject('ITeachersService') private teacherSer: ITeachersService,
-    @Inject('ICoursesService') private coursesSer: ICoursesService,
+    @Inject('ITeachersService') private teacherSer: ITeachersService,    
     @Inject('IUtilsService') private utilsSer: IUtilsService,
     private CONSTANTS:ConstantsService,   
     private formBuilder: FormBuilder
@@ -67,14 +65,12 @@ export class CourseFormComponent implements OnInit {
   };
 
   saveCourse(event: Event): void {
-    event.preventDefault();
-    let course = this.course;
+    event.preventDefault();    
     let json = this.courseForm.value;
-    course.name = json.name;
-    course.hours = json.hours;
-    course.startDate = this.utilsSer.parseDate(json.startDate, 'DD-MM-YYYY hh:mm A');
-    course.teacherId = json.teacherId;
-    this.afterUpdateUser.emit(course)
+    json.startDate = this.utilsSer.parseDate(json.startDate, 'DD-MM-YYYY hh:mm A');        
+    this.afterUpdateUser.emit(
+      Object.assign(this.course,json)
+    );
   }
 
 }

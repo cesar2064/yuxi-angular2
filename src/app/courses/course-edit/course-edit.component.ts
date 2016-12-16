@@ -1,4 +1,4 @@
-import { ICoursesService } from '../../shared/definitions/courses.service';
+import { ICoursesService } from '../../core/definitions/courses.service';
 import { CourseModel } from '../../shared/definitions/course.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';

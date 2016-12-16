@@ -1,0 +1,7 @@
+.teachers{
+  width: 600px;
+}
+.teachers tr{
+  cursor: pointer; 
+  cursor: hand;
+}

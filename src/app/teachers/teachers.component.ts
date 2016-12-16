@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { TeacherModel } from '../shared/definitions/teacher.model';
+import { ITeachersService } from '../core/definitions/teachers.service';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './teachers.component.html',
@@ -6,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeachersComponent implements OnInit {
 
-  constructor() { }
+  private orderKey: string;
+  private teachers: TeacherModel[];
 
-  ngOnInit() {
+  constructor( 
+    @Inject('ITeachersService') private teacherSer: ITeachersService, 
+    private router: Router
+  ) { }
+
+  ngOnInit() {    
+    this.teachers = this.teacherSer.getTeachers();
   }
 
+  orderEvent(key): void {
+    this.orderKey = key;
+  }
 }

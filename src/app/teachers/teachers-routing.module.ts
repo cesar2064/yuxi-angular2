@@ -1,9 +1,13 @@
+import { TeacherEditComponent } from './teacher-edit/teacher-edit.component';
 import { TeachersComponent } from './teachers.component';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {TeacherNewComponent} from './teacher-new/teacher-new.component';
 
 const appRoutes: Routes = [
-  { path: '', component:TeachersComponent }
+  { path: '', component: TeachersComponent },
+  { path: 'edit/:id', component: TeacherEditComponent },
+  { path: 'new', component: TeacherNewComponent }
 ];
 
 @NgModule({
@@ -14,4 +18,4 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class TeachersRoutingModule {}
+export class TeachersRoutingModule { }

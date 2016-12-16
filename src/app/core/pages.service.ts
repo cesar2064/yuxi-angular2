@@ -1,4 +1,4 @@
-import { IPagesService } from '../shared/definitions/pages.service';
+import { IPagesService } from './definitions/pages.service';
 import { PageModel } from '../shared/definitions/page.model';
 import { Injectable } from '@angular/core';
 
