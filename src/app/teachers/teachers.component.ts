@@ -1,3 +1,4 @@
+import { Observable, Subscription } from 'rxjs/Rx';
 import { TeacherModel } from '../shared/definitions/teacher.model';
 import { ITeachersService } from '../core/definitions/teachers.service';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -8,9 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./teachers.component.css']
 })
 export class TeachersComponent implements OnInit {
-
-  private orderKey: string;
-  private teachers: TeacherModel[];
+  private teachers:TeacherModel[] = [];
+  private orderKey: string;  
 
   constructor( 
     @Inject('ITeachersService') private teacherSer: ITeachersService, 
@@ -18,10 +18,13 @@ export class TeachersComponent implements OnInit {
   ) { }
 
   ngOnInit() {    
-    this.teachers = this.teacherSer.getTeachers();
+    this.teacherSer.getTeachers().subscribe(
+      (teachers) =>{ (this.teachers = teachers)}
+    );            
   }
 
   orderEvent(key): void {
     this.orderKey = key;
   }
+
 }

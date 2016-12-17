@@ -1,6 +1,6 @@
+import { ITeachersService } from './../../../core/definitions/teachers.service';
 import { Router } from '@angular/router';
 import { TeacherModel } from '../../../shared/definitions/teacher.model';
-import { ITeachersService } from '../../../core/definitions/teachers.service';
 import { OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
@@ -18,8 +18,9 @@ export class TeacherFormComponent implements OnInit {
 
   constructor(
     protected formBuilder: FormBuilder,
-    protected router:Router,
-    protected title:string
+    protected router: Router,
+    protected teachersSer:ITeachersService,
+    protected title: string    
   ) { }
 
   ngOnInit() {
@@ -36,8 +37,11 @@ export class TeacherFormComponent implements OnInit {
 
   saveTeacher(event: Event): void {
     event.preventDefault();
-    Object.assign(this.teacher, this.teacherForm.value)
-    this.router.navigate(['/teachers']);
+    this.teachersSer.save(this.teacherForm.value).subscribe(
+      (TeacherModel) => {
+        this.router.navigate(['/teachers']);
+      }
+    );
   }
 
 }

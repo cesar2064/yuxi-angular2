@@ -10,13 +10,13 @@
         </th>
         <th>LastName
           <orderer key="lastName" (orderEvent)="orderEvent($event)" [keyBinder]="orderKey"></orderer>
-        </th>        
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let teacher of teachers | orderBy:orderKey" [routerLink]="['/teachers/edit', teacher.id]">
         <td>{{teacher.name}}</td>
-        <td>{{teacher.lastName}}</td>        
+        <td>{{teacher.lastName}}</td>
       </tr>
     </tbody>
   </table>

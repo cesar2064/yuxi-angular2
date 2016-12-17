@@ -13,18 +13,10 @@ export class TeacherEditComponent extends TeacherFormComponent {
   constructor(
     private route: ActivatedRoute,
     protected router: Router,
-    @Inject('ITeachersService') private teachersSer: ITeachersService,
+    @Inject('ITeachersService') protected teachersSer: ITeachersService,
     protected formBuilder: FormBuilder
   ) {
-    super(formBuilder, router, 'Edit a teacher');
-  }
-
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      let id = +params['id'];
-      this.teacher = this.teachersSer.getById(id);
-    });
-    super.ngOnInit();
+    super(formBuilder, router,teachersSer, 'Edit a teacher');
   }
 
 }

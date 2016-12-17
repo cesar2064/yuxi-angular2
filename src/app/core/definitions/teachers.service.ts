@@ -1,7 +1,8 @@
+import { Observable } from 'rxjs/Rx';
 import {TeacherModel} from '../../shared/definitions/teacher.model';
 
 export interface ITeachersService{
-    getTeachers():TeacherModel[];
-    getById(id:number):TeacherModel;
-    create(teacher:TeacherModel):void;
+    getTeachers():Observable<TeacherModel[]>;
+    getById(id:number):Observable<TeacherModel>;
+    save(teacher:TeacherModel):Observable<TeacherModel>;
 }

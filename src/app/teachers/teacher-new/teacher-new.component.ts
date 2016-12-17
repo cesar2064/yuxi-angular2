@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { FormBuilder } from '@angular/forms';
 import { TeacherFormComponent, TEACHER_FORM_COMPONENT_METADATA } from './../shared/teacher-form/teacher-form.component';
 import { TeacherModel } from './../../shared/definitions/teacher.model';
@@ -12,20 +13,15 @@ export class TeacherNewComponent extends TeacherFormComponent {
 
   constructor(
     protected router: Router,
-    @Inject('ITeachersService') private teachersSer: ITeachersService,
-    protected formBuilder: FormBuilder    
+    @Inject('ITeachersService') protected teachersSer: ITeachersService,
+    protected formBuilder: FormBuilder
   ) {
-    super(formBuilder,router,'Creating a teacher');
-   }
+    super(formBuilder, router,teachersSer, 'Creating a teacher');
+  }
 
   ngOnInit() {
     this.teacher = new TeacherModel();
     super.ngOnInit();
-  }
-
-  saveTeacher(event:Event): void {    
-    super.saveTeacher(event);    
-    this.teachersSer.create(this.teacher);    
-  }
+  }  
 
 }
