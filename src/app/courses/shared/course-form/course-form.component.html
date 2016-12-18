@@ -38,7 +38,7 @@
     <div class="col-sm-9">
       <select class="form-control" id="thaughtBy" name="startDate" required="true" formControlName="teacherId">
         <option value="0">--- Select a teacher ---</option>
-        <option *ngFor="let teacher of teachers" [value]="teacher.id">{{teacher.name}} {{teacher.lastName}}</option>
+        <option *ngFor="let teacher of teachers | async" [value]="teacher.id">{{teacher.name}} {{teacher.lastName}}</option>
       </select>
       <div class="alert alert-danger" *ngIf="courseForm.controls.teacherId.invalid && courseForm.controls.teacherId.touched">
         Teacher is required

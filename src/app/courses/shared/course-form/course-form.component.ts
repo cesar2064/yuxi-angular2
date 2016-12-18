@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import { ConstantsService } from '../../../core/constants.service';
 import { IUtilsService } from '../../../shared/definitions/utils.service';
@@ -18,7 +19,7 @@ export class CourseFormComponent implements OnInit {
   protected course: CourseModel;  
   protected courseForm: FormGroup;
 
-  private teachers: TeacherModel[];
+  private teachers: Observable<TeacherModel[]>;
   
   private datePipe: DatePipe;
 
@@ -34,7 +35,7 @@ export class CourseFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.teachers = this.teacherSer.getTeachers();
+    this.teachers = this.teacherSer.getTeachers()
     this.courseForm = this.formGroup();
   }
 
