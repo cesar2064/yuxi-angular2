@@ -12,39 +12,37 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class TeachersService implements ITeachersService {  
 
-  private teachersUrl:string;
+  private apiUrl:string;
   
   constructor(
     private http:Http,
     private CONSTANTS:ConstantsService
   ) {
-    this.teachersUrl = `${CONSTANTS.BACKEND_API}/teachers`;
+    this.apiUrl = `${CONSTANTS.BACKEND_API}/teachers`;
    }
 
   getTeachers(): Observable<TeacherModel[]> {    
-    return this.http.get(this.teachersUrl).map(
+    return this.http.get(this.apiUrl).map(
       res => res.json().data
     );
   }
 
   getById(id: number): Observable<TeacherModel> {
-    return this.http.get(`${this.teachersUrl}/${id}`).map(
-      res => res.json()
+    return this.http.get(`${this.apiUrl}/${id}`).map(
+      res => res.json().data
     );
   }
 
-  save(teacher:{
-    id?:number,
-    name:string,
-    lastName:string
-  }): Observable<TeacherModel> {  
+  save(teacher:TeacherModel): Observable<TeacherModel> {  
+
+    teacher as {id?:number, name:string,lastName:string}
 
     if(teacher.id)  
-      return this.http.put(`this.teachersUrl/${teacher.id}`,teacher).map(
+      return this.http.put(`${this.apiUrl}/${teacher.id}`,teacher).map(
         res => res.json()
       )
     
-    return this.http.post(this.teachersUrl,teacher).map(
+    return this.http.post(this.apiUrl,teacher).map(
       res=> res.json()
     )
   }

@@ -21,7 +21,9 @@ export class CoursesComponent implements OnInit {
   ) { }
 
   ngOnInit() {    
-    this.courses = this.courseSer.getCourses();
+    this.courseSer.getCourses().subscribe(
+      courses=> this.courses = courses
+    );
   }
 
   orderEvent(key): void {

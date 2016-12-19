@@ -1,31 +1,49 @@
+import { Observable } from 'rxjs/Rx';
+import { ConstantsService } from './constants.service';
+import { Http } from '@angular/http';
 import { CourseModel } from '../shared/definitions/course.model';
 import { ICoursesService } from './definitions/courses.service';
 import { Injectable } from '@angular/core';
 
+// Import RxJs required methods
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
 @Injectable()
 export class CoursesService implements ICoursesService {
 
-  private courses: CourseModel[] = [
-    new CourseModel(1, 'Angular 2', 32, 1, new Date('01/01/2017')),
-    new CourseModel(2, 'Ionic 2', 20, 2, new Date('12/01/2017')),
-    new CourseModel(3, 'Test automation', 30, 3, new Date('05/15/2016')),
-    new CourseModel(4, 'Machine Learning', 45, 4, new Date('05/01/2017'))
-  ]
+  private apiUrl: string;
 
-  constructor() { }
-
-  getCourses(): CourseModel[] {
-    return this.courses;
+  constructor(
+    private http: Http,
+    private CONSTANTS: ConstantsService
+  ) {
+    this.apiUrl = `${CONSTANTS.BACKEND_API}/courses`;
   }
 
-  getById(id: Number): CourseModel {
-    return this.courses.find(course => course.id === id);
+  getCourses(): Observable<CourseModel[]> {
+    return this.http.get(this.apiUrl).map(
+      res => res.json().data
+    );
   }
 
-  create(course: CourseModel): void {
-    let length = this.courses.length;
-    course.id = length + 1;
-    this.courses[length] = course;
+  getById(id: Number): Observable<CourseModel> {
+    return this.http.get(`${this.apiUrl}/${id}`).map(
+      res => res.json().data
+    );
+  }
+
+  create(course: CourseModel): Observable<CourseModel> {
+    course as { id?: number, name: string, hours: number, startDate: Date, teacherId: number }
+
+    if (course.id)
+      return this.http.put(`${this.apiUrl}/${course.id}`, course).map(
+        res => res.json().data
+      )
+
+    return this.http.post(this.apiUrl, course).map(
+      res => res.json().data
+    )
   }
 
 }
